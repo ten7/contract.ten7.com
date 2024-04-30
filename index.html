@@ -53,9 +53,9 @@
             <li>Agency will configure Archive such that an offsite, geographically redundant snapshot is generated containing the last 7 daily snapshots and the last 4 weekly snapshots.</li>
             <li>Agency will provide <strong>[[d]]</strong> to Client where:
                <ol>
-                  <li><strong>Basic Backups</strong> also include 1 monthly snapshot in 1 offsite location.
+                  <li><strong>Basic Backups</strong> include 1 monthly snapshot in 1 offsite location.
                   </li>
-                  <li><strong>Pro Backups </strong> also include 12 monthly snapshots in 3 offsite locations.</li>
+                  <li><strong>Pro Backups </strong> include 12 monthly snapshots in 3 offsite locations.</li>
                </ol>
             </li>
          </ul>
@@ -123,33 +123,113 @@
       <hr>
 
 
-      <p>Fees for Services during Service Period are as follows:</p>
+      <p>Fees for Services during <strong>Service Period</strong> are as follows:</p>
       <ul>
-         <li><strong>Response Time - Service Level Agreement</strong><br>
-            [[a]] - $[[aval]]</li>         
-         <li><strong>Pantheon Hosting</strong><br>
-            [[b]] - $[[bval]]</li>
-         <li><strong>Drupal Updates</strong><br>
-            [[c]] - $[[cval]]</li>         
-         <li><strong>Offsite Backups</strong><br>
-            [[d]] - $[[dval]]</li>         
-         <li><strong>Care Requests</strong><br>
-            [[e]] - $[[eval]]</li>         
-         <li><strong>Planned Production Hours</strong><br>
-            [[f]] - $[[fval]]</li>         
-         <li><strong>Project Coordination</strong><br>
-            [[g]] - $[[gval]]</li>         
-         <li><strong>Jira and GitHub Access</strong><br>
-            [[h]] - $[[hval]]</li>         
-         <li><strong>Core Web Vitals Maintenance</strong><br>
-            [[i]] - $[[ival]]</li>         
-         <li><strong>Accessibility Maintenance with DubBot</strong><br>
-            [[j]] - $[[jval]]</li>         
-         <li><strong>Content Operations</strong><br>
-            [[k]] - $[[kval]]</li>
+         <li id="a2"><strong>Response Time - Service Level Agreement</strong><br>
+            [[a]] - [[aval]]</li>         
+         <li id="b2"><strong>Pantheon Hosting</strong><br>
+            [[b]] - [[bval]]</li>
+         <li id="c2"><strong>Drupal Updates</strong><br>
+            [[c]] - [[cval]]</li>         
+         <li id="d2"><strong>Offsite Backups</strong><br>
+            [[d]] - [[dval]]</li>         
+         <li id="e2"><strong>Care Requests</strong><br>
+            [[e]] - [[eval]]</li>         
+         <li id="f2"><strong>Planned Production Hours</strong><br>
+            [[f]] - [[fval]]</li>         
+         <li id="g2"><strong>Project Coordination</strong><br>
+            [[g]] - [[gval]]</li>         
+         <li id="h2"><strong>Jira and GitHub Access</strong><br>
+            [[h]] - [[hval]]</li>         
+         <li id="i2"><strong>Core Web Vitals Maintenance</strong><br>
+            [[i]] - [[ival]]</li>         
+         <li id="j2"><strong>Accessibility Maintenance with DubBot</strong><br>
+            [[j]] - [[jval]]</li>         
+         <li id="k2"><strong>Content Operations</strong><br>
+            [[k]] - [[kval]]</li>
       </ul>
-      <p>The total fee for this SOW is <strong>$[[pantot]]</strong> of which <strong>$[[tot]]</strong> will be billed in equal monthly installments of <strong>$[[mo]]</strong>. Payments are due on the first day of each month.</p>
+      <p>The total fee for this SOW is <strong>[[pantot]]</strong> of which <strong>[[tot]]</strong> will be billed in equal monthly installments of <strong>[[mo]]</strong>. Payments are due on the first day of each month.</p>
       <p>The first payment of <strong>[[first]]</strong> is due on the signing of this agreement and includes Pantheon Hosting, if selected.</p>
+
       
+      <script>
+
+         let USDollar = new Intl.NumberFormat('en-US', {
+               style: 'currency',
+               currency: 'USD',
+               minimumFractionDigits: 0,
+         });
+
+         const searchParams = new URLSearchParams(window.location.search);
+         const on = searchParams.get("on");
+         const str = "abcdefghijk";
+         //const allElements = document.querySelectorAll('span'); 
+
+         for (let i = 0; i < str.length; i++) {
+            const currentChar = str[i];
+
+            if (!on.includes(currentChar)) {
+               // Character not present, remove classes with this label
+               const elementToRemove = document.getElementById(currentChar);
+               if (elementToRemove) {
+                  elementToRemove.remove();
+               }
+               const elementToRemove2 = document.getElementById(currentChar + '2');
+               if (elementToRemove2) {
+                  elementToRemove2.remove();
+               }               
+            
+            }
+         }
+
+         const replacements = {
+            pantot: USDollar.format(searchParams.get("pantot")),
+            tot: USDollar.format(searchParams.get("tot")),
+            mo: USDollar.format(searchParams.get("mo")),
+            first: USDollar.format(searchParams.get("first")),
+            a: searchParams.get("a"),
+            b: searchParams.get("b"),
+            c: searchParams.get("c"),
+            d: searchParams.get("d"),
+            e: searchParams.get("e"),
+            f: searchParams.get("f"),
+            g: searchParams.get("g"),
+            h: searchParams.get("h"),
+            i: searchParams.get("i"),
+            j: searchParams.get("j"),
+            k: searchParams.get("k"),
+            aval: USDollar.format(searchParams.get("aval")),
+            bval: USDollar.format(searchParams.get("bval")),
+            cval: USDollar.format(searchParams.get("cval")),
+            dval: USDollar.format(searchParams.get("dval")),
+            eval: USDollar.format(searchParams.get("eval")),
+            fval: USDollar.format(searchParams.get("fval")),
+            gval: USDollar.format(searchParams.get("gval")),
+            hval: USDollar.format(searchParams.get("hval")),
+            ival: USDollar.format(searchParams.get("ival")),
+            jval: USDollar.format(searchParams.get("jval")),
+            kval: USDollar.format(searchParams.get("kval"))           
+         };
+
+         const allElements = document.querySelectorAll('*');
+
+         // Function to create a regular expression for a given key
+         function createSearchPattern(key) {
+            return new RegExp(`\\[\\[${key}\\]\\]`, 'g');
+         }
+
+         allElements.forEach(element => {
+            for (const key in replacements) {
+               const searchPattern = createSearchPattern(key);
+               if (element.innerHTML.includes(`[[${key}]]`)) {
+                  element.innerHTML = element.innerHTML.replace(searchPattern, replacements[key]);
+               }
+            }
+         });
+
+
+
+      </script>
+
    </body>
 </html>
