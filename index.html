@@ -6,8 +6,8 @@
          <ul>
             <li>Our support team can be reached directly via email by using <strong>support@ten7.com</strong> during standard Agency business hours, Monday to Friday, 9am to 5pm Central Standard Time (“Office Hours”).</li>
             <li>Requests that are received by Agency are acknowledged with an automated response. If Client does not receive an automated response within 15 minutes, Agency has not received the request in its system. Client should reach out to Agency using other means.</li>
-            <li>Received requests will be triaged with an initial time to response of <strong>[[a]]</strong> during Office Hours.</li>
-            <li>Whenever possible, resolution time is within <strong>[[a]]</strong>.</li>
+            <li>Received requests will be triaged with a First Response time of <strong>[[a1]]</strong> during Office Hours.</li>
+            <li>Whenever possible, Time to Resolve is within <strong>[[a2]]</strong>.</li>
             <li>For <strong>emergency-only</strong> support outside of Office Hours, on-call team members can be reached via email by using 911@ten7.com. Whenever possible, resolution time is within one (1) hour. <strong>Please use responsibly.</strong></li>
          </ul>
       </span>
@@ -119,7 +119,7 @@
       <p>Fees for Services during <strong>Service Period</strong> are as follows:</p>
       <ul>
          <li id="a2"><strong>Response Time - Service Level Agreement</strong><br>
-            [[a]] - [[aval]]</li>         
+            First Response: [[a1]], Time to Resolve: [[a2]] - [[aval]]</li>         
          <li id="b2"><strong>Pantheon Hosting</strong><br>
             [[b]] - [[bval]]</li>
          <li id="c2"><strong>Drupal Updates</strong><br>
@@ -175,13 +175,17 @@
             }
          }
 
+         const a = searchParams.get("a");
+         const [as1, as2] = a.split("/");
+
          const replacements = {
             pantot: USDollar.format(searchParams.get("pantot")),
             tot: USDollar.format(searchParams.get("tot")),
             mo: USDollar.format(searchParams.get("mo")),
             first: USDollar.format(searchParams.get("first")),
             req: USDollar.format(searchParams.get("req")),
-            a: searchParams.get("a"),
+            a1: as1.trim().replace("biz", "business"),
+            a2: as2.trim().replace("biz", "business"),
             b: searchParams.get("b"),
             c: searchParams.get("c"),
             d: searchParams.get("d"),
