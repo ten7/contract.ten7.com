@@ -165,6 +165,12 @@
             [[k]] - [[kval]]</li>
       </ul>
 
+      <br>
+      <ul>
+         <li id="x2"><strong>[[x]]</strong><br>
+            [[xval]]</li>         
+      </ul>      
+
       <p>The total fee for this SOW is <strong>[[pantot]]</strong> which will be billed in equal installments of <strong>[[mo]]</strong> per month. Payments are due on the first day of each month.</p>
       <p>A payment of <strong>[[first]]</strong> is due on signature of this SOW. It includes one time annual fees as well as your first monthly payment.</p>
 
@@ -179,7 +185,7 @@
 
          const searchParams = new URLSearchParams(window.location.search);
          const on = searchParams.get("on");
-         const str = "abcdefghijk";
+         const str = "abcdefghijkx";
          //const allElements = document.querySelectorAll('span'); 
 
          for (let i = 0; i < str.length; i++) {
@@ -220,6 +226,7 @@
             i: searchParams.get("i"),
             j: searchParams.get("j"),
             k: searchParams.get("k"),
+            x: searchParams.get("x"),
             aval: USDollar.format(searchParams.get("aval")),
             bval: USDollar.format(searchParams.get("bval")),
             cval: USDollar.format(searchParams.get("cval")),
@@ -230,7 +237,8 @@
             hval: USDollar.format(searchParams.get("hval")),
             ival: USDollar.format(searchParams.get("ival")),
             jval: USDollar.format(searchParams.get("jval")),
-            kval: USDollar.format(searchParams.get("kval"))           
+            kval: USDollar.format(searchParams.get("kval")),           
+            xval: USDollar.format(searchParams.get("xval"))           
          };
 
          const allElements = document.querySelectorAll('*');
