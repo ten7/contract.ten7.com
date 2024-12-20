@@ -19,8 +19,8 @@
             small design tweaks, small feature additions and changes, etc.
          </p>
          <ul>
-            <li>Client will receive <strong>[[e]]</strong> — if unused, requests do not carry over to the following month.</li>
-            <li>Additional requests are <strong>[[req]] per request</strong>, billed at the end of the month.</li>
+            <li id="ah1">Client will receive <strong>[[e]]</strong>. Unused requests do not carry over to the following month. Additional requests are <strong>[[req]] per request</strong>, billed at the end of the month.</li>
+            <li id="ah2">Client can make requests on an ad-hoc basis, billed at the end of the month for a flat fee of <strong>[[req]] per request</strong>.</li>
             <li>All Care Requests are evaluated for work effort. Requests determined to take less than one business day will be completed, otherwise Agency will contact Client to determine how to proceed.</li>
          </ul>
       </span>
@@ -255,6 +255,19 @@
             }
          });
 
+         // Check the 'e' URL parameter and remove the corresponding element
+         const eParam = searchParams.get("e"); 
+         if (eParam === "Ad Hoc") {
+            const elementToRemove = document.getElementById("ah1");
+            if (elementToRemove) {
+                elementToRemove.remove();
+            }
+         } else {
+            const elementToRemove = document.getElementById("ah2");
+            if (elementToRemove) {
+                elementToRemove.remove();
+            }
+         }         
 
 
       </script>
